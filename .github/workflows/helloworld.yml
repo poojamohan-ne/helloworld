@@ -13,8 +13,8 @@ jobs:
     - name: set-up
       uses: actions/checkout@v2
       with:
-        username: ${{secrets.DOCKERUSERNAME }}
-        password: ${{ secrets.DOCKERAPITOKEN}}
+        username: ${{ secrets.DOCKERUSERNAME }}
+        password: ${{ secrets.DOCKERAPIKEY }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag helloworld:$(date +%s)
       
