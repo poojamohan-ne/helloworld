@@ -18,7 +18,7 @@ jobs:
           password: ${{ secrets.DOCKERAPIKEY }}
           
     - name: Build the Docker image
-      run: docker build .
+      run: docker build . -t neethumohan1212:latest
     
 #     - name: Build and push
 #       id: docker_build
