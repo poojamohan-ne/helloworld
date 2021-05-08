@@ -10,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: set-up
+      uses: actions/checkout@v2
+      with:
+        username: ${{secrets.DOCKERUSERNAME }}
+        password: ${{ secrets.DOCKERAPITOKEN}}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag helloworld:$(date +%s)
+      
