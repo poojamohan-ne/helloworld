@@ -25,6 +25,8 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: neethumohan1212/helloworld:latest
+    - name: Image digest
+      run: echo ${{ steps.docker_build.outputs.digest }}
         
       
 #     - name: Build and push
