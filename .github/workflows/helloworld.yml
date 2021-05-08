@@ -17,9 +17,16 @@ jobs:
           username: ${{ secrets.DOCKERUSERNAME}}
           password: ${{ secrets.DOCKERAPIKEY }}
           
-    - name: Build the Docker image
-      run: docker build . -t neethumohan1212:latest
-    
+    - name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        context: ./
+        file: ./Dockerfile
+        push: true
+        tags: neethumohan1212/helloworld:latest
+        
+      
 #     - name: Build and push
 #       id: docker_build
 #       uses: docker/build-push-action@v2
