@@ -10,16 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v1
+    
     - name: set-up
       uses: actions/checkout@v2
       with:
         username: ${{ secrets.DOCKERUSERNAME }}
         password: ${{ secrets.DOCKERAPIKEY }}
+        
     - name: Build the Docker image
       run: docker build . --file Dockerfile
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v1
+    
     - name: Build and push
       id: docker_build
       uses: docker/build-push-action@v2
